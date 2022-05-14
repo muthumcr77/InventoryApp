@@ -1,10 +1,14 @@
-<% if @inventories.blank? %>
-  <h3>Click below to create a new Inventory!</h3><br>
-  <%= link_to "Create Inventory", new_inventory_path %>
-<% else %>
-  <% @inventories.each do |item| %>
-    <%= link_to "#{item.name}", inventory_path(item) %><br>
+<div class="container-fluid">
+  <% if @inventories.blank? %>
+    <h3>Click below to create a new Inventory!</h3><br>
+    <%= link_to "Create Inventory", new_inventory_path %>
+  <% else %>
+    <h3 class="font-monospace">List of current inventories:</h3>
+    <% @inventories.each do |item| %>
+      <%= link_to "#{item.name.upcase}", inventory_path(item) %><br>
+    <% end %>
+    <br>
+    <strong>Click below to create a new Inventory!</strong><br>
+    <div><%= link_to "Create Inventory", new_inventory_path, class: "btn btn-outline-success" %></div>
   <% end %>
-  <strong>Click below to create a new Inventory!</strong><br>
-  <%= link_to "Create Inventory", new_inventory_path %>
-<% end %>
+</div>

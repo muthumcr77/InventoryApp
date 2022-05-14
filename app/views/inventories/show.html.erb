@@ -1,10 +1,19 @@
-<div><%= @inventory.name %></div>
-<% if @inventory.items.exists? %>
-  <div>
+<div class="container-fluid">
+  <h2><center><%= @inventory.name.upcase %></center></h2>
+  <% if @inventory.items.exists? %>
     <% @inventory.items.each do |item| %>
-      <%= item.name %><br>
-      <%= item.count %><br>
-    <% end %>
-  </div>
-<% end %>
-<div><%= render "items/form", inventory: @inventory %></div>
+      <ul class="container list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Name:</strong> <%= item.name %><br>
+          <strong>Count:</strong> <%= item.count %><br>
+        </li>
+      </ul>
+    <% end %><br>
+    <strong>Add a new item:</strong><br><br>
+    <div><%= render "items/form", inventory: @inventory %></div>
+  <% else %>
+    <strong>No items currently present!</strong><br><br>
+    <strong>Add a new item:</strong><br><br>
+    <div><%= render "items/form", inventory: @inventory %></div>  
+  <% end %><br>
+</div>
