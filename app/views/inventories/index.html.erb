@@ -1,0 +1,10 @@
+<% if @inventories.blank? %>
+  <h3>Click below to create a new Inventory!</h3><br>
+  <%= link_to "Create Inventory", new_inventory_path %>
+<% else %>
+  <% @inventories.each do |item| %>
+    <%= link_to "#{item.name}", inventory_path(item) %><br>
+  <% end %>
+  <strong>Click below to create a new Inventory!</strong><br>
+  <%= link_to "Create Inventory", new_inventory_path %>
+<% end %>

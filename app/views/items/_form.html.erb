@@ -1,0 +1,12 @@
+<%= form_with model: [ @inventory, @inventory.items.build ] do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div><br>
+  <div>
+    <%= form.label :count %>
+    <%= form.number_field :count, min: 0 %>
+  </div><br>
+  <%= form.hidden_field :inventory_id %>
+  <%= form.submit %>
+<% end %>

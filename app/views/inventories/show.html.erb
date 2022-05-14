@@ -1,0 +1,10 @@
+<div><%= @inventory.name %></div>
+<% if @inventory.items.exists? %>
+  <div>
+    <% @inventory.items.each do |item| %>
+      <%= item.name %><br>
+      <%= item.count %><br>
+    <% end %>
+  </div>
+<% end %>
+<div><%= render "items/form", inventory: @inventory %></div>

@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
     <%= yield %>
+    </br></br><button><%= link_to "Go to Home", root_path %></button>
   </body>
 </html>

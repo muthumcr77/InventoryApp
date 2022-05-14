@@ -1,0 +1,7 @@
+<%= form_with model: @inventory do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div><br>
+  <%= form.submit %>
+<% end %>
