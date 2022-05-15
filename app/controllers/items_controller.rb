@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   # CALLBACKS
-  before_action :set_inventory
+  before_action :set_inventory#, except: :destroy
   
   def index
     @items = @inventory.items.all
@@ -36,15 +36,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @items = @inventory.items.all
-  end
+  # def show
+  #   @items = @inventory.items.all
+  # end
 
   def destroy
     @item = @inventory.items.find(params[:id])
-    @item.destroy
-    flash[:alert] = "Item deleted."
-    redirect_to @inventory
+    flash[:alert] = "Item deleted." if @item.destroy
+    redirect_to root_path
   end
 
   private

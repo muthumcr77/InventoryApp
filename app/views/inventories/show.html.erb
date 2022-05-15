@@ -1,20 +1,20 @@
-<div class="container-fluid">
-  <h2><center><%= @inventory.name.upcase %></center></h2>
-  <% if @inventory.items.exists? %>
-    <% @inventory.items.each do |item| %>
-      <ul class="container list-group list-group-flush">
-        <li class="list-group-item">
-          <strong>Name:</strong> <%= item.name %><br>
-          <strong>Count:</strong> <%= item.count %><br>
-        </li>
-        <%= link_to "Update count", edit_inventory_item_path(item.inventory_id, item) %>
-      </ul>
-    <% end %><br>
-    <strong>Add a new item:</strong><br><br>
-    <div><%= render "items/form", inventory: @inventory %></div>
-  <% else %>
-    <strong>No items currently present!</strong><br><br>
-    <strong>Add a new item:</strong><br><br>
-    <div><%= render "items/form", inventory: @inventory %></div>  
-  <% end %><br>
-</div>
+<br>
+<h3><%= @inventory.name.upcase %></h3>
+<span>
+  <%= link_to "Delete Inventory", inventory_path(@inventory), 
+    data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+    }, class: "btn btn-outline-danger" %>
+</span><br><br>
+<% if @inventory.items.exists? %>
+  <strong>Items: </strong><br>
+  <%= render @inventory.items %>
+
+  <strong>Add a new item:</strong><br>
+  <%= render "items/form" %>
+<% else %>
+  <h4>Inventory is empty!</h4><br>
+  <strong>Add a new item:</strong><br>
+  <%= render "items/form" %>
+<% end %>

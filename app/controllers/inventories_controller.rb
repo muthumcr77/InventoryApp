@@ -4,6 +4,10 @@ class InventoriesController < ApplicationController
     @inventories = Inventory.all
   end
 
+  def show
+    @inventory = Inventory.find(params[:id])
+  end
+  
   def new
     @inventory = Inventory.new
   end
@@ -33,10 +37,6 @@ class InventoriesController < ApplicationController
     end
   end
 
-  def show
-    @inventory = Inventory.find(params[:id])
-  end
-
   def destroy
     @inventory = Inventory.find(params[:id])
     @inventory.destroy
@@ -46,6 +46,6 @@ class InventoriesController < ApplicationController
 
   private
   def inventory_params
-    params.require(:inventory).permit(:name, items: [:name, :count, :_destroy])
+    params.require(:inventory).permit(:name)
   end
 end

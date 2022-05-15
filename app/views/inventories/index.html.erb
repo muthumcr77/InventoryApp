@@ -3,9 +3,12 @@
     <h3>Click below to create a new Inventory!</h3><br>
     <%= link_to "Create Inventory", new_inventory_path %>
   <% else %>
-    <h4 class="font-monospace">LIST OF CURRENT INVENTORIES:</h4>
-    <% @inventories.each do |item| %>
-      <ol><%= link_to "#{item.name.upcase}", inventory_path(item) %></ol>
+    </br>
+    <h5>LIST OF CURRENT INVENTORIES:</h5>
+    <% @inventories.each do |inventory| %>
+      <ol>
+        <%= link_to "#{inventory.name.upcase}", inventory_path(inventory) %>
+      </ol>
     <% end %>
     <br>
     <strong>Click below to create a new Inventory!</strong><br>

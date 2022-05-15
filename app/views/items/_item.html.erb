@@ -1,0 +1,12 @@
+
+<strong>Name:</strong> <%= item.name %><br>
+<strong>Count:</strong> <%= item.count %><br>
+<span>
+  <%= link_to "Update count", edit_inventory_item_path(item.inventory_id, item) %>
+  <%= link_to "Remove", inventory_item_path(item.inventory_id, item), 
+      data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      }, class: "text-danger" %>
+</span>
+<br>

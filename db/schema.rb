@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_112904) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_164255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,8 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_112904) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "inventory_id", null: false
-    t.index ["inventory_id"], name: "index_items_on_inventory_id"
   end
 
-  add_foreign_key "items", "inventories"
 end
