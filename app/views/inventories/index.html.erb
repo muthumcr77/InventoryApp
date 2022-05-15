@@ -3,9 +3,9 @@
     <h3>Click below to create a new Inventory!</h3><br>
     <%= link_to "Create Inventory", new_inventory_path %>
   <% else %>
-    <h3 class="font-monospace">List of current inventories:</h3>
+    <h4 class="font-monospace">LIST OF CURRENT INVENTORIES:</h4>
     <% @inventories.each do |item| %>
-      <%= link_to "#{item.name.upcase}", inventory_path(item) %><br>
+      <ol><%= link_to "#{item.name.upcase}", inventory_path(item) %></ol>
     <% end %>
     <br>
     <strong>Click below to create a new Inventory!</strong><br>

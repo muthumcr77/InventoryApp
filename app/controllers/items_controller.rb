@@ -28,9 +28,9 @@ class ItemsController < ApplicationController
 
   def update
     @item = @inventory.items.find(params[:id])
-    if @item.update
+    if @item.update(item_params)
       flash[:notice] = "Item updated!"
-      redirect_to @inventory
+      redirect_to inventory_path(@inventory)
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = @inventory.item.find(params[:id])
+    @item = @inventory.items.find(params[:id])
     @item.destroy
     flash[:alert] = "Item deleted."
     redirect_to @inventory

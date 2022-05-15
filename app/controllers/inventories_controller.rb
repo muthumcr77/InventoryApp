@@ -25,7 +25,7 @@ class InventoriesController < ApplicationController
 
   def update
     @inventory = Inventory.find(params[:id])
-    if @inventory.update
+    if @inventory.update(inventory_params)
       flash[:notice] = "Inventory updated!"
       redirect_to @inventory
     else
@@ -46,6 +46,6 @@ class InventoriesController < ApplicationController
 
   private
   def inventory_params
-    params.require(:inventory).permit(:name)
+    params.require(:inventory).permit(:name, items: [:name, :count, :_destroy])
   end
 end

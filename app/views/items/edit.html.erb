@@ -1,2 +1,8 @@
 <h3>Edit the item:</h3>
-<%= render "form" %>
+<%= form_with model: [@inventory, @item] do |form| %>
+  <div>
+    <%= form.label :count %>
+    <%= form.number_field :count, min: 0 %>
+  </div><br>
+  <%= form.submit class: "btn btn-dark" %>
+<% end %>
