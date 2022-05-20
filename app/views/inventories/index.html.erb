@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <% if @inventories.blank? %>
+    <br>
     <h3>Click below to create a new Inventory!</h3><br>
-    <%= link_to "Create Inventory", new_inventory_path %>
+    <%= link_to "Create Inventory", new_inventory_path, class: "btn btn-outline-primary" %>
   <% else %>
     </br>
     <h5>LIST OF CURRENT INVENTORIES:</h5>
@@ -12,6 +13,6 @@
     <% end %>
     <br>
     <strong>Click below to create a new Inventory!</strong><br>
-    <div><%= link_to "Create Inventory", new_inventory_path, class: "btn btn-outline-success" %></div>
+    <div><%= link_to "Create Inventory", new_inventory_path, class: "btn btn-outline-primary" %></div>
   <% end %>
 </div>

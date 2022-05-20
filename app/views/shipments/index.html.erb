@@ -1,0 +1,16 @@
+<% if @shipments.blank? %>
+<br>
+  <h3>No shipments present!</h3><br>
+  <strong>Click below to create a new Shipment!</strong><br>
+  <%= link_to "Create Shipment", new_shipment_path, class: "btn btn-outline-primary" %>
+<% else %>
+  </br>
+  <h5>LIST OF CURRENT SHIPMENTS:</h5>
+  <div class="container-fluid">
+    <% @shipments.each do |shipment| %>
+      <ol>
+        <%= link_to "#{shipment.name.upcase}", shipments_path(shipment) %>
+      </ol>
+    <% end %>
+  </div>
+<% end %>

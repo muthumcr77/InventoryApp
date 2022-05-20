@@ -1,8 +1,7 @@
-<%= form_with model: @inventory do |form| %>
+<%= form_with model: @shipment do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
-    <%= form.hidden_field :shipment_id%>
   </div><br>
   <%= form.submit class: "btn btn-success" %>
 <% end %>

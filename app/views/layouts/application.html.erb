@@ -13,8 +13,13 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Inventory Manager</span>
-        <span><%= link_to "Go to Home", root_path, class: "btn btn-primary" %></span>
+        <div class="navbar-brand mb-0 h1">Inventory Manager</div>
+        <span>
+          <div class="container-fluid">
+            <%= link_to "Shipments", shipments_path, class: "btn btn-success" %>
+            <%= link_to "Go to Home", root_path, class: "btn btn-primary" %>
+          </div>
+        </span>
       </div>
     </nav>
     <% if notice %>

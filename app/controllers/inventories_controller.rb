@@ -19,6 +19,7 @@ class InventoriesController < ApplicationController
       flash[:notice] = "New inventory created!"
       redirect_to @inventory
     else
+      flash[:alert] = "Try again."
       render :new
     end
   end
@@ -41,11 +42,11 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.find(params[:id])
     @inventory.destroy
     flash[:alert] = "Inventory deleted."
-    redirect_to root_path
+    redirect_to root_path, status: :see_other
   end
 
   private
   def inventory_params
-    params.require(:inventory).permit(:name)
+    params.require(:inventory).permit(:name, :shipment_id)
   end
 end

@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = @inventory.items.find(params[:id])
     flash[:alert] = "Item deleted." if @item.destroy
-    redirect_to root_path
+    redirect_to @inventory, status: :see_other
   end
 
   private
