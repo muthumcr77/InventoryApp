@@ -1,7 +1,6 @@
 class ShipmentsController < ApplicationController
 
   # CALLBACKS
-  # before_action :list_inventories
 
   def index
     @shipments = Shipment.all
@@ -9,7 +8,7 @@ class ShipmentsController < ApplicationController
 
   def show
     @shipment = Shipment.find(params[:id])
-    @shipment_inventories = Inventory.where(shipment_id: @shipment.id)
+    @inventories = Inventory.all
   end
 
   def new
@@ -28,13 +27,17 @@ class ShipmentsController < ApplicationController
     end
   end
 
+  # def find_inventory
+  #   @shipment = Shipment.find(params[:id])
+  #   @inventories = Inventory.all
+  # end
+
   def add_inventory
     @shipment = Shipment.find(params[:id])
-    @inventory = Inventory.find(params[:id])
-    # @inventory.shipment_id = @shipment.id
-    if @inventory.update_attributes(shipment_id: @shipment.id)
+    @inventory = Inventory.find(params[:shipment_id])
+    if @inventory.update_attribute(:shipment_id, @shipment.id)
       flash[:notice] = "Inventory added to shipment!"
-      redirect_to @shipment, status: :see_other
+      redirect_to shipment_path(@shipment), status: :see_other
     else
       flash[:alert] = "Please try again."
       render :add_inventory
@@ -65,9 +68,5 @@ class ShipmentsController < ApplicationController
   private
   def shipment_params
     params.require(:shipment).permit(:name)
-  end
-
-  def list_inventories
-    inventories = Inventory.all
   end
 end

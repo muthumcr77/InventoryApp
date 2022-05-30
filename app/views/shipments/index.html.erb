@@ -9,7 +9,7 @@
   <div class="container-fluid">
     <% @shipments.each do |shipment| %>
       <ol>
-        <%= link_to "#{shipment.name.upcase}", shipments_path(shipment) %>
+        <%= link_to "#{shipment.name.upcase}", shipment_path(shipment) %>
       </ol>
     <% end %>
   </div>

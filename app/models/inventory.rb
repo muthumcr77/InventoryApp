@@ -2,7 +2,7 @@ class Inventory < ApplicationRecord
 
   # ASSOCIATIONS
   has_many :items, dependent: :destroy
-  belongs_to :shipment
+  belongs_to :shipment, optional: true
 
   # VALIDATIONS
   validates :name, presence: true

@@ -1,1 +1,21 @@
-<h4><%= @shipment.name.upcase %></h4>
+<div class="container-fluid">
+<%= @shipment.name.upcase %><br>
+<% @inventories.each do |inventory| %>
+  <h4><%= inventory.name.upcase %></h4>
+  <strong>Items:</strong><br>
+  <ol>
+  <% inventory.items.each do |item| %>
+    <li>
+      <span>
+      <strong>Name:</strong>
+      <%= item.name %>
+      |
+      <strong>Count:</strong>
+      <%= item.count %>
+      </span>
+    </li>
+  <% end %>
+  </ol>
+  <%= link_to "Add to shipment", add_inventory_shipment_path(@shipment, inventory) %>
+<% end %>
+</div>
